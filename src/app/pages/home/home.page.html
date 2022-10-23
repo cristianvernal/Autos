@@ -9,21 +9,21 @@
     src="assets/images/login.jpg"
     alt="logo" class="foto"></ion-img>
 
-  <form [formGroup]="form" (submit)="send()" errorTailor>
+  <form [formGroup]="form">
     <ion-item>
 
       <ion-label for="email" position="floating">Correo</ion-label>
-      <ion-input class="caja" type="text" id="email" formControlName="email" [(ngModel)]="modeloCorreo"></ion-input>
+      <ion-input class="caja" type="text" id="email" formControlName="email"></ion-input>
       
     </ion-item>
 
     <ion-item>
 
       <ion-label for="password" position="floating">Contraseña</ion-label>
-      <ion-input class="caja" type="password" formControlName="password" id="password" [(ngModel)]="modeloPassword"></ion-input>
+      <ion-input class="caja" type="password" formControlName="password" id="password" ></ion-input>
     </ion-item>
       
-    <ion-button class="boton" type="submit" (click)="validarCredenciales()" [routerLink]="['/cuenta']">Ingresar</ion-button>
+    <ion-button class="boton" type="submit" (click)="loginCliente()">Ingresar</ion-button>
   </form>
 
 

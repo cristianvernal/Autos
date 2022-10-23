@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController} from '@ionic/angular';
-import { FormGroup, FormBuilder,Validators} from '@angular/forms';
-import { DbService } from '../../services/db.service';
+import { FormGroup, FormBuilder,Validators, FormControl} from '@angular/forms';
+
+import { ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -10,68 +12,72 @@ import { DbService } from '../../services/db.service';
 })
 export class RegistroPage implements OnInit {
 
-  constructor(private FormBuilder: FormBuilder, private alertController: AlertController) { 
-    // this.DbService.createDataBase().then(() =>{
-    //   // tomara las personas
-    //   this.getPersonas();
-    // });  
-  }
-  public datos: FormGroup;
-  personas: any = [];
-  personaNombre: string = '';
-  personaCorreo: string = '';
-  personaContrasena: string = '';
-  
-  
-  
+  datos: FormGroup;
+  constructor(private FormBuilder: FormBuilder, private alertController: AlertController,  public toatsCrtl: ToastController, public navCtrl: NavController ) { 
+    
+    
+    this.datos = this.FormBuilder.group ({
+      nombre: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
 
-  ngOnInit(): void{
-      this.datos = this.FormBuilder.group({
-        nombre: ['', [Validators.required, Validators.minLength(4)]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]],
-           
+      ])),   
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.email,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),      
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(10)
+      ]))
+    })
+  }
+  
+  ngOnInit() {
+  }
+
+  async registroNuevo(){
+    var dato = this.datos.value;
+
+    //this.router.navigate(['/home']);
+
+    if(this.datos.invalid){
+      //this.router.navigate(['/registro']);
+      const alert = await this.alertController.create({
+        header: 'faltan datos',
+        message: 'debes ingresar todos los datos',
+        buttons: ['Aceptar']
       });
-  }
-
-  send(): any{
-    console.log(this.datos.value);
-  }
-
-    
-  async registroCompleto() {
-    const alert = await this.alertController.create({
-      header: 'Registro Enviado',
-      message: 'Se ha enviado un correo de confirmacion exitosamente.',
-      buttons: ['OK'],
-    });
-    
-    await alert.present();
-  }
   
-  // getPersonas(){
-  //   this.dbservice.getPersona().then((data) =>{
-  //     this.personas = [];
-  //     if(data.rows.length > 0){
-  //       for(var i = 0; i < data.rows.length; i++){
-  //         this.personas.push(data.rows.item(i));
-  //       }
-  //     }
-  //   });
-  // }
+      await alert.present();
+      return;
+    }else{
+      this.navCtrl.navigateRoot('home');
+    }
 
-  // addPersonaNombre(){
-  //   if (!this.personaNombre.length){
-  //     alert ('ingresar datos');
-  //     return;
-  //   }
-    
-  //   this.dbservice.addPersona(this.personaNombre, this.personaCorreo, this. personaContrasena).then((data)=>{
-  //     this.personaNombre = '';
-  //     alert(data);
-  //     this.getPersonas();
-  //   });
-    
-  // }
+    var usuario = {
+      
+      email: dato.email,
+      password: dato.password,
+
+    }
+
+    localStorage.setItem('usuario',JSON.stringify(usuario));
+  }
 
 }
+
+
+  
+  
+
+
+    
+
+  
+
