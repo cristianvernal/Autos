@@ -13,7 +13,7 @@
 
     <ion-item>
       <ion-label position="floating" >Nombre</ion-label>
-      <ion-input type="text"  formControlName="nombre" ([ngModel])="nombre"></ion-input>
+      <ion-input type="text"  formControlName="name" ([ngModel])="nombre"></ion-input>
     </ion-item>
      <ion-item>
       <ion-label position="floating" for="email">Correo</ion-label>
@@ -24,7 +24,7 @@
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
     
-    <ion-button class="boton" (click)="registroNuevo()">
+    <ion-button class="boton" (click)="registrarNuevo()">
       Agregar
     </ion-button>
   </form>

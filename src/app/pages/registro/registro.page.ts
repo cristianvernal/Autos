@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController} from '@ionic/angular';
 import { FormGroup, FormBuilder,Validators, FormControl} from '@angular/forms';
-
-import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -13,11 +12,12 @@ import { NavController } from '@ionic/angular';
 export class RegistroPage implements OnInit {
 
   datos: FormGroup;
-  constructor(private FormBuilder: FormBuilder, private alertController: AlertController,  public toatsCrtl: ToastController, public navCtrl: NavController ) { 
+
+  constructor(public FormBuilder: FormBuilder, public alertController: AlertController, public navCtrl: NavController, public router: Router ) { 
     
     
     this.datos = this.FormBuilder.group ({
-      nombre: new FormControl('', Validators.compose([
+      name: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(15)
@@ -25,9 +25,9 @@ export class RegistroPage implements OnInit {
       ])),   
       email: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.email,
+       Validators.email,
         Validators.minLength(3),
-        Validators.maxLength(15)
+        Validators.maxLength(200)
 
       ])),      
       password: new FormControl('', Validators.compose([
@@ -41,30 +41,34 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
 
-  async registroNuevo(){
-    var dato = this.datos.value;
+  async registrarNuevo(){
+    var f = this.datos.value;
 
-    //this.router.navigate(['/home']);
+    
 
     if(this.datos.invalid){
-      //this.router.navigate(['/registro']);
+      
       const alert = await this.alertController.create({
-        header: 'faltan datos',
-        message: 'debes ingresar todos los datos',
+        header: 'Incompleto',
+        message: 'Faltan datos',
         buttons: ['Aceptar']
       });
   
       await alert.present();
       return;
     }else{
+      const alerta = await this.alertController.create({
+        header: 'Exito',
+        message: 'Usuario Registrado',
+        buttons: ['Aceptar']
+      });
+      await alerta.present();
       this.navCtrl.navigateRoot('home');
     }
 
     var usuario = {
-      
-      email: dato.email,
-      password: dato.password,
-
+      email: f.email,
+      password: f.password
     }
 
     localStorage.setItem('usuario',JSON.stringify(usuario));
