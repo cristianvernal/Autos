@@ -15,7 +15,9 @@ export class RegistroPage implements OnInit {
   datos: FormGroup;
   usuario = {
 
-    name: ""
+    name: "",
+    email: "",
+    password:""
   }
 
   constructor(public FormBuilder: FormBuilder, public alertController: AlertController, public navCtrl: NavController, public router: Router ) { 
