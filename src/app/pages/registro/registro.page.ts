@@ -3,6 +3,7 @@ import { AlertController} from '@ionic/angular';
 import { FormGroup, FormBuilder,Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-registro',
@@ -12,6 +13,10 @@ import { NavController } from '@ionic/angular';
 export class RegistroPage implements OnInit {
 
   datos: FormGroup;
+  usuario = {
+
+    name: ""
+  }
 
   constructor(public FormBuilder: FormBuilder, public alertController: AlertController, public navCtrl: NavController, public router: Router ) { 
     

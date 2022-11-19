@@ -5,31 +5,23 @@
 </ion-header>
 
 <ion-content class="login ion-padding ion-text-center">
-  <ion-img
-    src="assets/images/login.jpg"
+  <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdv4xFyWbPgxgkuvrrLHmmiCTelbRtIf15Hg&usqp=CAU"
     alt="logo" class="foto"></ion-img>
 
   <form [formGroup]="form">
     <ion-item>
-
       <ion-label for="email" position="floating">Correo</ion-label>
       <ion-input class="caja" type="text" id="email" formControlName="email"></ion-input>
-      
     </ion-item>
 
     <ion-item>
-
       <ion-label for="password" position="floating">Contraseña</ion-label>
-      <ion-input class="caja" type="password" formControlName="password" id="password" ></ion-input>
+      <ion-input class="caja" type="password" formControlName="password" id="password"></ion-input>
     </ion-item>
-      
+
     <ion-button class="boton" type="submit" (click)="loginCliente()">Ingresar</ion-button>
   </form>
 
-
-  <ion-button class="boton" ion-button [routerLink]="['/recuperar']">Recuperar Contraseña</ion-button>
-
   <ion-button class="boton" [routerLink]="['/registro']">Nuevo Usuario</ion-button>
-
- 
+  <ion-button class="boton" [routerLink]="['/recover']">Recuperar Contraseña</ion-button>
 </ion-content>
