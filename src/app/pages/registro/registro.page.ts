@@ -15,12 +15,11 @@ export class RegistroPage implements OnInit {
   datos: FormGroup;
   usuario = {
 
-    name: "",
-    email: "",
-    password:""
+    name: ""
+    
   }
 
-  constructor(public FormBuilder: FormBuilder, public alertController: AlertController, public navCtrl: NavController, public router: Router ) { 
+  constructor(public FormBuilder: FormBuilder, public alertController: AlertController, public navCtrl: NavController, public router: Router, private data: DbService ) { 
     
     
     this.datos = this.FormBuilder.group ({
@@ -48,8 +47,15 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
 
+
+  onSubmit(){
+    this.data.disparador.emit(this.usuario.name)
+    
+  }
+
   async registrarNuevo(){
     var f = this.datos.value;
+    
 
     
 
@@ -74,11 +80,14 @@ export class RegistroPage implements OnInit {
     }
 
     var usuario = {
+      name: f.name,
       email: f.email,
       password: f.password
     }
 
     localStorage.setItem('usuario',JSON.stringify(usuario));
+
+    
   }
 
 }

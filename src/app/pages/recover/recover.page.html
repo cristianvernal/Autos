@@ -9,9 +9,12 @@
 
 <ion-content>
 <h1>Ingresa tu correo</h1>
-  <ion-item>
 
+
+  <ion-item>
+    <ion-label position="floating" for="email">Correo</ion-label>
     <ion-input placeholder="ingresa correo"></ion-input>
   </ion-item>
-  <ion-button class="boton">Recuperar</ion-button>
+  <ion-button class="boton" (click)="presentAlert()" >Recuperar</ion-button>
+
 </ion-content>

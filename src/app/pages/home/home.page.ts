@@ -13,12 +13,20 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   form: FormGroup;
-  email: String;
+
+  usuario = { 
+    name: ""
+   
+  }
+
+  
+  
 
   constructor(public loadingController: LoadingController,
     private FormBuilder: FormBuilder,
     private alertController: AlertController,
-    public navCtrl: NavController, private router: Router) {
+    public navCtrl: NavController, private router: Router,
+    private data: DbService) {
 
     this.form = this.FormBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -64,4 +72,9 @@ export class HomePage implements OnInit {
     }
 
   }
+  onSubmit(){
+    this.data.disparador.emit(this.usuario.name)
+    
+  }
+ 
 }

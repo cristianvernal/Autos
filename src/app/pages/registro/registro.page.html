@@ -9,11 +9,11 @@
 
 <ion-content>
   <h1>Ingresa tus datos</h1>
-  <form [formGroup]="datos">
+  <form [formGroup]="datos" (ngSubmit)="onSubmit()">
 
     <ion-item>
-      <ion-label position="floating" >Nombre</ion-label>
-      <ion-input type="text"  formControlName="name" ([ngModel])="nombre"></ion-input>
+      <ion-label position="floating" for="name" >Nombre</ion-label>
+      <ion-input type="text"  formControlName="name" [(ngModel)]="usuario.name"></ion-input>
     </ion-item>
      <ion-item>
       <ion-label position="floating" for="email">Correo</ion-label>
@@ -24,7 +24,7 @@
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
     
-    <ion-button class="boton" (click)="registrarNuevo()">
+    <ion-button class="boton" type="submit" (click)="registrarNuevo()">
       Agregar
     </ion-button>
   </form>
