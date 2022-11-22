@@ -1,9 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ingresarViaje</ion-title>
+    <ion-title>Ingresar Viaje</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/viajes"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<form >
+<ion-item>
+  <ion-label position="floating" for="name">Nombre Conductor</ion-label>
+  <ion-input type="text" placeholder="ej: Evelyn Barrera"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating" for="patente">Patente</ion-label>
+  <ion-input type="text" placeholder="ej: BTHM-6040"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating" for="modelo">Modelo Auto</ion-label>
+  <ion-input type="text" placeholder="ej: Toyota"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating" for="destino">Destino</ion-label>
+  <ion-input type="text" placeholder="ej: Forestal"></ion-input>
+</ion-item>
+  
+  <ion-item>
+  <ion-label for="time">Hora Salida</ion-label>
+   <ion-datetime presentation="time"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label for="destino">Asientos Disponibles</ion-label>
+    <ion-button (click)="openPicker()">Open</ion-button>
+  </ion-item>
+
+  <ion-button class="boton" type="submit">Ingresar</ion-button>
+
+
+</form>
 
 </ion-content>
