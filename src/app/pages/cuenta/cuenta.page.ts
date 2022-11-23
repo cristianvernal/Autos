@@ -9,7 +9,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 })
 export class CuentaPage implements OnInit {
 
-nombreUsuario: string;
+nombreUsuario = JSON.parse(localStorage.getItem('usuario'))
 
   constructor( private data: DbService, public photoService: PhotoService) { }
 

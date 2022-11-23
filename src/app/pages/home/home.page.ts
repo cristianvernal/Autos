@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
-import { FormGroup, FormBuilder, Validators, NgModel, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,  FormControl } from '@angular/forms';
 import { DbService } from 'src/app/services/db.service';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';

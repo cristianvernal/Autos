@@ -8,5 +8,33 @@
 </ion-header>
 
 <ion-content>
- 
+  <ion-accordion-group>
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Viaje 1</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-label> Nombre Conductor: {{viaje.name}} </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Patente: {{viaje.patente}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Modelo: {{viaje.modelo}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Destino: {{viaje.destino}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Costo: {{viaje.dinero}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hora Salida: {{viaje.time}}</ion-label>
+        </ion-item>
+
+        <ion-button shape="round" (click)="unirse()">Unirse</ion-button>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
 </ion-content>
