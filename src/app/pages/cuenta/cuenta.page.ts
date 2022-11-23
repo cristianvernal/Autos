@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-cuenta',
@@ -10,7 +11,7 @@ export class CuentaPage implements OnInit {
 
 nombreUsuario: string;
 
-  constructor( private data: DbService) { }
+  constructor( private data: DbService, public photoService: PhotoService) { }
 
   ngOnInit() {
 
@@ -20,6 +21,8 @@ nombreUsuario: string;
     })
   }
 
-
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
 
 }

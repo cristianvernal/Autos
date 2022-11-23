@@ -8,6 +8,19 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-list *ngIf="listaCosas">
+    <ion-item *ngFor='let cosa of listaCosas'>
+        <ion-avatar slot="start">
+            <img [src]='cosa.image'>
+        </ion-avatar>
+        <ion-label>
+           
+            <h3>{{ cosa.name }}</h3>
+        </ion-label>
+        <ion-img src="/assets/icon/211620_b_right_arrow_icon.png" (click)="goToDetalles(cosa)"></ion-img>
+    </ion-item>
+</ion-list>
   <!-- <ion-tabs>
     <ion-tab-bar slot="bottom">
       

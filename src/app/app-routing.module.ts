@@ -40,6 +40,10 @@ const routes: Routes = [
     path: 'buscar-viaje',
     loadChildren: () => import('./pages/buscar-viaje/buscar-viaje.module').then( m => m.BuscarViajePageModule)
   },
+  {
+    path: 'detalles',
+    loadChildren: () => import('./pages/detalles/detalles.module').then( m => m.DetallesPageModule)
+  },
 ];
 
 @NgModule({

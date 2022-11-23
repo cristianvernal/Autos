@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PickerController } from '@ionic/angular';
+import { FormGroup, FormBuilder,Validators, FormControl} from '@angular/forms';
+import { DbService } from 'src/app/services/db.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ingresar-viaje',
@@ -8,50 +11,91 @@ import { PickerController } from '@ionic/angular';
 })
 export class IngresarViajePage implements OnInit {
 
-  constructor(private pickerCtrl: PickerController) { }
+  viaje: FormGroup;
+
+  constructor(private pickerCtrl: PickerController, public FormBuilder: FormBuilder, private dbservice: DbService, private alertCtrl: AlertController) {
+    this.viaje = this.FormBuilder.group({
+      name: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),   
+      patente:new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),   
+      modelo:new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),   
+      destino:new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),   
+      time: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),   
+      asiento:new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(2)
+
+      ])),   
+      dinero: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(15)
+
+      ])),   
+
+    })
+   }
 
   ngOnInit() {
   }
-  async openPicker() {
-    const picker = await this.pickerCtrl.create({
-      columns: [
-        {
-          name: 'asientos',
-          options: [
-            {
-              text: '1',
-              value: 'uno',
-            },
-            {
-              text: '2',
-              value: 'dos',
-            },
-            {
-              text: '3',
-              value: 'tres',
-            },
-            {
-              text: '4',
-              value: 'cuatro',
-            },
-          ],
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancelar',
-        },
-        {
-          text: 'Confirmar',
-          handler: (value) => {
-            window.alert(`has seleccionado: ${value.asientos.value}`);
-          },
-        },
-      ],
-    });
+  
 
-    await picker.present();
-  }
+ async ingresarViaje(){
+   var v = this.viaje.value;
+    
+    if(this.viaje.invalid){
+
+      const alert = await this.alertCtrl.create({
+        header: 'Incompleto',
+        message: 'Faltan datos',
+        buttons: ['Aceptar']
+      });
+  
+      await alert.present();
+      return;
+    }else{
+      const alerta = await this.alertCtrl.create({
+        header: 'Exito',
+        message: 'viaje Registrado',
+        buttons: ['Aceptar']
+      });
+      await alerta.present();
+    }
+   
+   var viaje = {
+    name: v.name,
+    patente: v.patente,
+    modelo: v.modelo,
+    destino: v.destino,
+    time: v.time,
+    dinero: v.dinero
+   }
+   localStorage.setItem('viaje',JSON.stringify(viaje));
+}
 }
 

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder,Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -49,9 +50,11 @@ export class RegistroPage implements OnInit {
 
 
   onSubmit(){
-    this.data.disparador.emit(this.usuario.name)
+    
     
   }
+
+  
 
   async registrarNuevo(){
     var f = this.datos.value;

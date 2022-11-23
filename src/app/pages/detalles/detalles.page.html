@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>detalles</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cuenta"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-label>Destino: {{cosa.name}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Conductor: {{cosa.conductor}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Patente: {{cosa.patente}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Salida: {{cosa.hora}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Valor Viaje: {{cosa.valor}}</ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>

@@ -8,38 +8,39 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="viaje">
+    <ion-item>
+      <ion-label position="floating" for="name">Nombre Conductor</ion-label>
+      <ion-input type="text" placeholder="ej: Evelyn Barrera" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" for="patente">Patente</ion-label>
+      <ion-input type="text" placeholder="ej: BTHM-6040" formControlName="patente"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" for="modelo">Modelo Auto</ion-label>
+      <ion-input type="text" placeholder="ej: Toyota" formControlName="modelo"></ion-input>
+    </ion-item>
 
-<form >
-<ion-item>
-  <ion-label position="floating" for="name">Nombre Conductor</ion-label>
-  <ion-input type="text" placeholder="ej: Evelyn Barrera"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-label position="floating" for="patente">Patente</ion-label>
-  <ion-input type="text" placeholder="ej: BTHM-6040"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-label position="floating" for="modelo">Modelo Auto</ion-label>
-  <ion-input type="text" placeholder="ej: Toyota"></ion-input>
-</ion-item>
+    <ion-item>
+      <ion-label position="floating" for="destino">Destino</ion-label>
+      <ion-input type="text" placeholder="ej: Forestal" formControlName="destino"></ion-input>
+    </ion-item>
 
-<ion-item>
-  <ion-label position="floating" for="destino">Destino</ion-label>
-  <ion-input type="text" placeholder="ej: Forestal"></ion-input>
-</ion-item>
-  
-  <ion-item>
-  <ion-label for="time">Hora Salida</ion-label>
-   <ion-datetime presentation="time"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label for="destino">Asientos Disponibles</ion-label>
-    <ion-button (click)="openPicker()">Open</ion-button>
-  </ion-item>
+    <ion-item>
+      <ion-label for="time" position="floating">Hora Salida</ion-label>
+      <ion-input type="text" placeholder="ej: 12:45" formControlName="time" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label for="asiento" position="floating">Asientos Disponibles</ion-label>
+      <ion-input type="text" placeholder="ej: 2" formControlName="asiento"></ion-input>
+    </ion-item>
 
-  <ion-button class="boton" type="submit">Ingresar</ion-button>
+    <ion-item>
+      <ion-label position="floating" for="dinero">Valor Viaje</ion-label>
+      <ion-input type="text" placeholder="ej: $2000" formControlName="dinero"></ion-input>
+    </ion-item>
 
-
-</form>
-
+    <ion-button class="boton" type="submit" shape="round" (click)="ingresarViaje()">Ingresar</ion-button>
+  </form>
 </ion-content>
