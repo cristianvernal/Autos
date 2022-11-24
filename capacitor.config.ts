@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'geoLoc',
+  appId: 'com.example.app',
+  appName: 'teLlevoApp',
   webDir: 'www',
   bundledWebRuntime: false
 };
